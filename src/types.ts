@@ -15,25 +15,44 @@ export type Scalars = {
 
 export type Pokemon = {
   __typename?: 'Pokemon';
-  height: Scalars['Float'];
+  height: Scalars['Int'];
   name: Scalars['String'];
-  weight: Scalars['Float'];
+  weight: Scalars['Int'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  metric?: Maybe<Pokemon>;
-  metrics?: Maybe<Array<Maybe<Pokemon>>>;
+  heights?: Maybe<Stats>;
+  size?: Maybe<Pokemon>;
+  sizes?: Maybe<Array<Maybe<Pokemon>>>;
+  weights?: Maybe<Stats>;
 };
 
 
-export type QueryMetricArgs = {
+export type QueryHeightsArgs = {
+  names: Array<Scalars['String']>;
+};
+
+
+export type QuerySizeArgs = {
   name: Scalars['String'];
 };
 
 
-export type QueryMetricsArgs = {
+export type QuerySizesArgs = {
   names: Array<Scalars['String']>;
+};
+
+
+export type QueryWeightsArgs = {
+  names: Array<Scalars['String']>;
+};
+
+export type Stats = {
+  __typename?: 'Stats';
+  mean: Scalars['Float'];
+  median: Scalars['Float'];
+  mode: Scalars['Float'];
 };
 
 
@@ -107,8 +126,10 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Float: ResolverTypeWrapper<Scalars['Float']>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
   Pokemon: ResolverTypeWrapper<Pokemon>;
   Query: ResolverTypeWrapper<{}>;
+  Stats: ResolverTypeWrapper<Stats>;
   String: ResolverTypeWrapper<Scalars['String']>;
 };
 
@@ -116,25 +137,37 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   Float: Scalars['Float'];
+  Int: Scalars['Int'];
   Pokemon: Pokemon;
   Query: {};
+  Stats: Stats;
   String: Scalars['String'];
 };
 
 export type PokemonResolvers<ContextType = any, ParentType extends ResolversParentTypes['Pokemon'] = ResolversParentTypes['Pokemon']> = {
-  height?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  height?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  weight?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  weight?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  metric?: Resolver<Maybe<ResolversTypes['Pokemon']>, ParentType, ContextType, RequireFields<QueryMetricArgs, 'name'>>;
-  metrics?: Resolver<Maybe<Array<Maybe<ResolversTypes['Pokemon']>>>, ParentType, ContextType, RequireFields<QueryMetricsArgs, 'names'>>;
+  heights?: Resolver<Maybe<ResolversTypes['Stats']>, ParentType, ContextType, RequireFields<QueryHeightsArgs, 'names'>>;
+  size?: Resolver<Maybe<ResolversTypes['Pokemon']>, ParentType, ContextType, RequireFields<QuerySizeArgs, 'name'>>;
+  sizes?: Resolver<Maybe<Array<Maybe<ResolversTypes['Pokemon']>>>, ParentType, ContextType, RequireFields<QuerySizesArgs, 'names'>>;
+  weights?: Resolver<Maybe<ResolversTypes['Stats']>, ParentType, ContextType, RequireFields<QueryWeightsArgs, 'names'>>;
+};
+
+export type StatsResolvers<ContextType = any, ParentType extends ResolversParentTypes['Stats'] = ResolversParentTypes['Stats']> = {
+  mean?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  median?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  mode?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Pokemon?: PokemonResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Stats?: StatsResolvers<ContextType>;
 };
 

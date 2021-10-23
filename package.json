@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "watch": "nodemon",
     "generate": "graphql-codegen"
   },
   "devDependencies": {
@@ -20,6 +21,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.2.2",
     "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
@@ -29,6 +31,6 @@
   "dependencies": {
     "apollo-server": "^3.4.0",
     "graphql": "^15.7.2",
-    "nodemon": "^2.0.14"
+    "pokeapi-typescript": "^2.1.0"
   }
 }

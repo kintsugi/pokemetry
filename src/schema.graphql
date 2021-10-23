@@ -1,10 +1,18 @@
 type Pokemon {
   name: String!
-  height: Float!
-  weight: Float!
+  height: Int!
+  weight: Int!
+}
+
+type Stats {
+  mean: Float!
+  median: Float!
+  mode: Float!
 }
 
 type Query {
-  metric(name: String!): Pokemon
-  metrics(names: [String!]!): [Pokemon]
+  size(name: String!): Pokemon
+  sizes(names: [String!]!): [Pokemon]
+  heights(names: [String!]!): Stats
+  weights(names: [String!]!): Stats
 }
