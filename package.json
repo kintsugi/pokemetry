@@ -1,0 +1,34 @@
+{
+  "name": "pokemetry",
+  "version": "0.0.0",
+  "description": "View height & weight metrics for Pokemon using pokeapi.co",
+  "author": "Kyle Salter <me@kylesalter.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "generate": "graphql-codegen"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.2.1",
+    "@graphql-codegen/typescript": "^2.2.4",
+    "@graphql-codegen/typescript-resolvers": "2.3.2",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.2.2",
+    "jest": "^27.3.1",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "apollo-server": "^3.4.0",
+    "graphql": "^15.7.2",
+    "nodemon": "^2.0.14"
+  }
+}

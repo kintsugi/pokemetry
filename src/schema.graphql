@@ -1,0 +1,10 @@
+type Pokemon {
+  name: String!
+  height: Float!
+  weight: Float!
+}
+
+type Query {
+  metric(name: String!): Pokemon
+  metrics(names: [String!]!): [Pokemon]
+}
