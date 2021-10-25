@@ -1,25 +1,21 @@
-import PokeAPI from 'pokeapi-typescript';
-
 import { Resolvers } from './types';
+import { getPokemon, getPokemons } from './pokeapi';
 
 export const resolvers: Resolvers = {
   Query: {
     size: async (parent, args) => {
-      const { name, height, weight } = await PokeAPI.Pokemon.resolve(args.name);
-
-      return { name, height, weight };
+      const pokemon = await getPokemon(args.name);
+      return pokemon;
     },
     sizes: async (parent, args) => {
-      const { names = [] } = args;
-      const results = await Promise.all(
-        names.map((name) => PokeAPI.Pokemon.resolve(name)),
-      );
-      const metrics = results.map((pokemon) => {
-        const { name, height, weight } = pokemon;
-        return { name, height, weight };
-      });
-
-      return metrics;
+      const pokemons = await getPokemons(args.names || []);
+      return pokemons;
+    },
+    heights: async (parent, args) => {
+      const pokemons = await getPokemons(args.names || []);
+      const mean =
+        pokemons.reduce((sum, pokemon) => sum + pokemon.height, 0) /
+        pokemons.length;
     },
   },
 };

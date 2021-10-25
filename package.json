@@ -31,6 +31,7 @@
   "dependencies": {
     "apollo-server": "^3.4.0",
     "graphql": "^15.7.2",
-    "pokeapi-typescript": "^2.1.0"
+    "pokeapi-typescript": "^2.1.0",
+    "simple-statistics": "^7.7.0"
   }
 }
