@@ -1,7 +1,7 @@
 {
   "name": "pokemetry",
   "version": "0.0.0",
-  "description": "View height & weight metrics for Pokemon using pokeapi.co",
+  "description": "Query height & weight metrics for Pokemon using pokeapi.co",
   "author": "Kyle Salter <me@kylesalter.com>",
   "license": "MIT",
   "scripts": {
