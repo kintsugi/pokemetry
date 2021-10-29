@@ -17,7 +17,7 @@ An example query can be viewed using apollo studio [here](https://studio.apollog
     Navigate into your new site’s directory and start it up.
 
     ```sh
-    cd palindrome
+    cd pokemetry
     yarn
     yarn start
     ```
