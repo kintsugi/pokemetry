@@ -1,20 +1,20 @@
 import { mean, median, mode } from 'simple-statistics';
 
-import { Resolvers } from './types';
+import { Resolvers } from './typeDefs';
 import { getPokemon, getPokemons } from './pokeapi';
 
 export const resolvers: Resolvers = {
   Query: {
-    size: async (parent, args) => {
-      const pokemon = await getPokemon(args.name);
+    size: async (_, { name }) => {
+      const pokemon = await getPokemon(name);
       return pokemon;
     },
-    sizes: async (parent, args) => {
-      const pokemons = await getPokemons(args.names || []);
+    sizes: async (_, { names }) => {
+      const pokemons = await getPokemons(names || []);
       return pokemons;
     },
-    heights: async (parent, args) => {
-      const pokemons = await getPokemons(args.names || []);
+    heights: async (_, { names }) => {
+      const pokemons = await getPokemons(names || []);
       const heights = pokemons.map(({ height }) => height);
       return {
         mean: mean(heights),
@@ -22,8 +22,8 @@ export const resolvers: Resolvers = {
         mode: mode(heights),
       };
     },
-    weights: async (parent, args) => {
-      const pokemons = await getPokemons(args.names || []);
+    weights: async (_, { names }) => {
+      const pokemons = await getPokemons(names || []);
       const weights = pokemons.map(({ weight }) => weight);
       return {
         mean: mean(weights),
