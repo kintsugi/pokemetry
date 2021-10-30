@@ -1,4 +1,4 @@
-type Pokemon {
+type PokemonSize {
   name: String!
   height: Int!
   weight: Int!
@@ -11,8 +11,8 @@ type Stats {
 }
 
 type Query {
-  size(name: String!): Pokemon
-  sizes(names: [String!]!): [Pokemon]
+  size(name: String!): PokemonSize
+  sizes(names: [String!]!): [PokemonSize]
   heights(names: [String!]!): Stats
   weights(names: [String!]!): Stats
 }

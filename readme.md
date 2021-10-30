@@ -19,6 +19,7 @@ An example query can be viewed using apollo studio [here](https://studio.apollog
     ```sh
     cd pokemetry
     yarn
+    yarn test
     yarn start
     ```
 

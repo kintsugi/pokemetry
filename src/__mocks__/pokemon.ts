@@ -13,5 +13,9 @@ export const ditto = fs.readJSONSync(
   path.join(__dirname, 'ditto.json'),
 ) as IPokemon;
 
-const mockPokedex: { [name: string]: IPokemon } = { charizard, pikachu, ditto };
-export default mockPokedex;
+const mockPokeAPIPokemon: { [name: string]: IPokemon } = {
+  charizard,
+  pikachu,
+  ditto,
+};
+export default mockPokeAPIPokemon;
